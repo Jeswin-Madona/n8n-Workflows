@@ -58,25 +58,18 @@ Thank-you Email Automatically
 
 ## 📸 Workflow Screenshot
 
-> Add your workflow screenshot here.
 
-Example:
 
-```
-![Workflow](https://raw.githubusercontent.com/Jeswin-Madona/n8n-Workflows/dbf8d8a550685483e7d425d039750937efd419dd/My%20first%20Automation%20Workflow/Screenshot%202026-07-05%20170310.png)
-```
+
+
+![Workflow](https://github.com/Jeswin-Madona/n8n-Workflows/blob/838f4eb5d600ddcd00acaddd1e2363176ccddbbb/My%20first%20Automation%20Workflow/Screenshot%202026-07-05%20170310.png)
+
 
 ---
 
 ## 📸 Output Screenshot
 
-> Add the received email screenshot here.
-
-Example:
-
-```
-![Output](https://raw.githubusercontent.com/Jeswin-Madona/n8n-Workflows/dbf8d8a550685483e7d425d039750937efd419dd/My%20first%20Automation%20Workflow/output.png)
-```
+![Output](https://github.com/Jeswin-Madona/n8n-Workflows/blob/838f4eb5d600ddcd00acaddd1e2363176ccddbbb/My%20first%20Automation%20Workflow/output.png)
 
 ---
 
