@@ -1,3 +1,4 @@
+
 # 📧 Feedback Email Automation using n8n
 
 An event-driven workflow built with **n8n** that automatically sends a thank-you email whenever a user submits a feedback form.
@@ -62,7 +63,7 @@ Thank-you Email Automatically
 Example:
 
 ```
-screenshots/workflow.png
+<img width="1907" height="916" alt="Screenshot 2026-07-05 170310" src="https://github.com/user-attachments/assets/8697dfee-0055-4c47-9973-9d656f192446" />
 ```
 
 ---
@@ -74,7 +75,8 @@ screenshots/workflow.png
 Example:
 
 ```
-screenshots/output-email.png
+<img width="1911" height="917" alt="output" src="https://github.com/user-attachments/assets/19d67d62-c42a-4299-8477-38facf79a5c0" />
+
 ```
 
 ---
