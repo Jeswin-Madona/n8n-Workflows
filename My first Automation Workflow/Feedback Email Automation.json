@@ -1,0 +1,89 @@
+{
+  "name": "Feedback Email Automation",
+  "nodes": [
+    {
+      "parameters": {
+        "sendTo": "={{ $json['Type your Email'] }}",
+        "subject": "Thank you for your feedback",
+        "emailType": "text",
+        "message": "=Hi!,\nThank you for submitting the feeedback,\n\nregards,\nJeswin Madona  ",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        368,
+        0
+      ],
+      "id": "61b5d0b4-1180-436a-a60d-61b9cb55cf2f",
+      "name": "Send a message",
+      "webhookId": "34fa5a2f-ad28-4da2-a70d-02b9fa12cb48",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "kHOjst6Fh7C2XVlQ",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "formTitle": "Feedback",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "Type your Name"
+            },
+            {
+              "fieldLabel": "Type your Email",
+              "fieldType": "email"
+            },
+            {
+              "fieldLabel": "Give your Feedback",
+              "fieldType": "textarea"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.6,
+      "position": [
+        96,
+        0
+      ],
+      "id": "abca34a5-3e1b-4420-a945-5de76c19a1a3",
+      "name": "On form submission",
+      "webhookId": "e3ba2e71-447c-4ba0-b537-49c7a82c4f41"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "On form submission": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "18406f11-7c07-4416-87f4-f377f4be39ca",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "ce633715522fed7c810c382a8416068af510eb5efa2a068770ce7966e289da03"
+  },
+  "nodeGroups": [],
+  "id": "ncOFthU8TNm2YlX2",
+  "tags": []
+}
