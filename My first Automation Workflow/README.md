@@ -63,7 +63,7 @@ Thank-you Email Automatically
 Example:
 
 ```
-[<img width="1907" height="916" alt="Screenshot 2026-07-05 170310" src="https://github.com/user-attachments/assets/8697dfee-0055-4c47-9973-9d656f192446" />](https://raw.githubusercontent.com/Jeswin-Madona/n8n-Workflows/dbf8d8a550685483e7d425d039750937efd419dd/My%20first%20Automation%20Workflow/Screenshot%202026-07-05%20170310.png)
+![Workflow](https://raw.githubusercontent.com/Jeswin-Madona/n8n-Workflows/dbf8d8a550685483e7d425d039750937efd419dd/My%20first%20Automation%20Workflow/Screenshot%202026-07-05%20170310.png)
 ```
 
 ---
@@ -75,8 +75,7 @@ Example:
 Example:
 
 ```
-[<img width="1911" height="917" alt="output" src="https://github.com/user-attachments/assets/19d67d62-c42a-4299-8477-38facf79a5c0" />
-](https://raw.githubusercontent.com/Jeswin-Madona/n8n-Workflows/dbf8d8a550685483e7d425d039750937efd419dd/My%20first%20Automation%20Workflow/output.png)
+![Output](https://raw.githubusercontent.com/Jeswin-Madona/n8n-Workflows/dbf8d8a550685483e7d425d039750937efd419dd/My%20first%20Automation%20Workflow/output.png)
 ```
 
 ---
