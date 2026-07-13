@@ -225,7 +225,7 @@ Sends a professional HTML report containing:
 
 Empty database before running the workflow.
 
-![Google Sheet Before](images/google-sheet-before.png)
+![Google Sheet Before](https://github.com/Jeswin-Madona/n8n-Workflows/blob/f800e810e4365ebc82c3cbb89259af8ca9b2951d/AI%20Job%20Helper/Blank%20Sheet%202.png)
 
 ---
 
@@ -233,7 +233,7 @@ Empty database before running the workflow.
 
 Workflow running successfully inside n8n.
 
-![Execution](images/execution.png)
+![Execution](https://github.com/Jeswin-Madona/n8n-Workflows/blob/f800e810e4365ebc82c3cbb89259af8ca9b2951d/AI%20Job%20Helper/Successful%20Execution%203.png)
 
 ---
 
@@ -241,7 +241,7 @@ Workflow running successfully inside n8n.
 
 Application data stored automatically.
 
-![Google Sheet After](images/google-sheet-after.png)
+![Google Sheet After](https://github.com/Jeswin-Madona/n8n-Workflows/blob/f800e810e4365ebc82c3cbb89259af8ca9b2951d/AI%20Job%20Helper/Sheet%20Output%204.png)
 
 ---
 
@@ -249,7 +249,7 @@ Application data stored automatically.
 
 Generated Job Match Report received in Gmail.
 
-![Mail Output](images/email-output.png)
+![Mail Output](https://github.com/Jeswin-Madona/n8n-Workflows/blob/f800e810e4365ebc82c3cbb89259af8ca9b2951d/AI%20Job%20Helper/Mail%20Output%205.png)
 
 ---
 
