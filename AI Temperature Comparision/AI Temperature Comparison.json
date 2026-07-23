@@ -1,0 +1,573 @@
+{
+  "name": "AI Temperature Comparison",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -1008,
+        432
+      ],
+      "id": "594ffbf3-c7b5-4fcd-ace1-19dceca77aa7",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "d81af80d-eb62-450b-b1b5-9320b5f4abb1",
+              "name": "Question",
+              "value": "Explain Java Collections Framework",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -832,
+        448
+      ],
+      "id": "87f0c1b8-bd5b-48c7-83ba-8d503d90c9d2",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "Question",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        -576,
+        464
+      ],
+      "id": "b5e2ee19-31e7-4170-bbdc-4882fe6db4cb",
+      "name": "Split Out"
+    },
+    {
+      "parameters": {
+        "numberInputs": 4
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        960,
+        288
+      ],
+      "id": "4c5d2a80-d801-485f-a48c-4dd3569191d5",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "1LnsCK2lgjC-nf0zAItqRv3QTJuZotTiVd4aap5tYk3o",
+          "mode": "list",
+          "cachedResultName": "AI Temperature Comparision ",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1LnsCK2lgjC-nf0zAItqRv3QTJuZotTiVd4aap5tYk3o/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1LnsCK2lgjC-nf0zAItqRv3QTJuZotTiVd4aap5tYk3o/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Question": "={{ $('Edit Fields').item.json.Question }}",
+            "Temp0.0": "={{ $('AI 0.0 Agent').item.json.output }}",
+            "Temp0.3": "={{ $('').item.json.output }}",
+            "Temp0.7": "={{ $('').item.json.output }}",
+            "Temp1.0": "={{ $('').item.json.output }}"
+          },
+          "matchingColumns": [
+            "Question"
+          ],
+          "schema": [
+            {
+              "id": "Question",
+              "displayName": "Question",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Temp0.0",
+              "displayName": "Temp0.0",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Temp0.3",
+              "displayName": "Temp0.3",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Temp0.7",
+              "displayName": "Temp0.7",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Temp1.0",
+              "displayName": "Temp1.0",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        1232,
+        304
+      ],
+      "id": "47a2e9f6-120a-4bbf-87d7-09c72de89892",
+      "name": "Append or update row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "x5zSj4AMSwQTCrtA",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {
+          "temperature": 0
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatMistralCloud",
+      "typeVersion": 1,
+      "position": [
+        -368,
+        208
+      ],
+      "id": "2cb9650d-85d3-4616-ab29-7cade28a95f5",
+      "name": "Temp0.0",
+      "credentials": {
+        "mistralCloudApi": {
+          "id": "FwPjCIS9CtQtW2Jy",
+          "name": "Mistral Cloud account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {
+          "temperature": 0.3
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatMistralCloud",
+      "typeVersion": 1,
+      "position": [
+        496,
+        768
+      ],
+      "id": "1c23196c-b118-47bd-b0ed-0f39dcf2d5bd",
+      "name": "Temp0.3",
+      "credentials": {
+        "mistralCloudApi": {
+          "id": "FwPjCIS9CtQtW2Jy",
+          "name": "Mistral Cloud account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {
+          "temperature": 0.7
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatMistralCloud",
+      "typeVersion": 1,
+      "position": [
+        80,
+        320
+      ],
+      "id": "b2cffca1-0465-4111-bce0-f5f33ca8137e",
+      "name": "Temp0.7",
+      "credentials": {
+        "mistralCloudApi": {
+          "id": "FwPjCIS9CtQtW2Jy",
+          "name": "Mistral Cloud account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {
+          "temperature": 1
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatMistralCloud",
+      "typeVersion": 1,
+      "position": [
+        224,
+        640
+      ],
+      "id": "3f84adbe-bfc6-4706-af10-97bc628bb3f4",
+      "name": "Temp1.0",
+      "credentials": {
+        "mistralCloudApi": {
+          "id": "FwPjCIS9CtQtW2Jy",
+          "name": "Mistral Cloud account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.Question }}",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        -416,
+        32
+      ],
+      "id": "4a160735-4902-498a-a51e-1ce2643a75c8",
+      "name": "AI 0.0 Agent"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.Question }}",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        -128,
+        176
+      ],
+      "id": "6154779c-0eed-48a0-a371-1d053b8c0e6f",
+      "name": "0.3 AI Agent"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.Question }}",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        432,
+        576
+      ],
+      "id": "a9ec06bd-64bb-4de1-b025-ce11bd36e8f9",
+      "name": "1.0 AI Agent"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.Question }}",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        176,
+        432
+      ],
+      "id": "bee23056-bfc2-448a-b8a6-e9198a168bba",
+      "name": "0.7 AI Agent"
+    }
+  ],
+  "pinData": {
+    "Edit Fields": [
+      {
+        "json": {
+          "Question": "Explain Java Collections Framework"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ],
+    "Split Out": [
+      {
+        "json": {
+          "Question": "Explain Java Collections Framework"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ],
+    "Merge": [
+      {
+        "json": {
+          "output": "The **Java Collections Framework (JCF)** is a unified architecture for representing and manipulating collections of objects in Java. It provides interfaces, implementations, and algorithms to store, retrieve, and manipulate groups of objects efficiently. The framework is part of the `java.util` package and is designed to be flexible, reusable, and high-performance.\n\n---\n\n## **1. Core Interfaces in Java Collections Framework**\nThe JCF is built around several key interfaces that define different types of collections:\n\n| **Interface**  | **Description** | **Implementations** |\n|---------------|----------------|---------------------|\n| **`Collection<E>`** | Root interface for all collections. | `List`, `Set`, `Queue` |\n| **`List<E>`** | Ordered collection (allows duplicates). | `ArrayList`, `LinkedList`, `Vector` |\n| **`Set<E>`** | Unordered collection (no duplicates). | `HashSet`, `LinkedHashSet`, `TreeSet` |\n| **`Queue<E>`** | FIFO (First-In-First-Out) structure. | `PriorityQueue`, `ArrayDeque`, `LinkedList` |\n| **`Deque<E>`** | Double-ended queue (supports insertion/removal at both ends). | `ArrayDeque`, `LinkedList` |\n| **`Map<K,V>`** | Key-value pairs (not a `Collection` but part of JCF). | `HashMap`, `LinkedHashMap`, `TreeMap` |\n\n---\n\n## **2. Key Implementations**\n### **A. List Implementations**\n- **`ArrayList`** (Dynamic array, fast random access, slow insertions/deletions in the middle).\n- **`LinkedList`** (Doubly-linked list, fast insertions/deletions, slow random access).\n- **`Vector`** (Thread-safe, legacy, replaced by `ArrayList` in most cases).\n- **`Stack`** (LIFO structure, legacy, replaced by `Deque`).\n\n### **B. Set Implementations**\n- **`HashSet`** (Uses a hash table, no ordering, allows `null`).\n- **`LinkedHashSet`** (Maintains insertion order).\n- **`TreeSet`** (Sorted in natural order or via `Comparator`, no `null`).\n\n### **C. Queue & Deque Implementations**\n- **`PriorityQueue`** (Elements ordered by priority).\n- **`ArrayDeque`** (Resizable array, faster than `LinkedList` for stack/queue operations).\n- **`LinkedList`** (Can also act as a `Deque`).\n\n### **D. Map Implementations**\n- **`HashMap`** (Fastest, no ordering, allows one `null` key).\n- **`LinkedHashMap`** (Maintains insertion order).\n- **`TreeMap`** (Sorted by keys, no `null` keys).\n- **`Hashtable`** (Legacy, thread-safe, replaced by `ConcurrentHashMap`).\n\n---\n\n## **3. Utility Classes**\n### **A. `Collections` Class**\nProvides static utility methods for collections:\n- Sorting (`sort()`)\n- Searching (`binarySearch()`)\n- Synchronization (`synchronizedList()`, `synchronizedSet()`)\n- Unmodifiable views (`unmodifiableList()`, `unmodifiableMap()`)\n\n### **B. `Arrays` Class**\nProvides utility methods for arrays (e.g., `asList()`, `sort()`, `binarySearch()`).\n\n---\n\n## **4. Key Features**\n✅ **Type Safety** – Generics (`List<String>`) ensure compile-time type checking.\n✅ **Flexibility** – Different implementations for different use cases.\n✅ **Algorithms** – Built-in methods like `sort()`, `shuffle()`, `reverse()`.\n✅ **Thread Safety** – Some implementations (`Vector`, `Hashtable`) are thread-safe, but modern alternatives (`CopyOnWriteArrayList`, `ConcurrentHashMap`) are preferred.\n✅ **Interoperability** – Works seamlessly with Java Streams (`stream()`, `parallelStream()`).\n\n---\n\n## **5. Example Usage**\n### **List Example**\n```java\nList<String> list = new ArrayList<>();\nlist.add(\"Apple\");\nlist.add(\"Banana\");\nlist.forEach(System.out::println); // Iteration\n```\n\n### **Set Example**\n```java\nSet<Integer> set = new HashSet<>();\nset.add(1);\nset.add(2);\nset.add(1); // Duplicate ignored\nSystem.out.println(set); // [1, 2]\n```\n\n### **Map Example**\n```java\nMap<String, Integer> map = new HashMap<>();\nmap.put(\"Alice\", 25);\nmap.put(\"Bob\", 30);\nSystem.out.println(map.get(\"Alice\")); // 25\n```\n\n### **Queue Example**\n```java\nQueue<String> queue = new LinkedList<>();\nqueue.offer(\"First\");\nqueue.offer(\"Second\");\nSystem.out.println(queue.poll()); // \"First\" (FIFO)\n```\n\n---\n\n## **6. Performance Considerations**\n| **Operation** | **ArrayList** | **LinkedList** | **HashSet** | **TreeSet** |\n|--------------|--------------|---------------|------------|------------|\n| **Access** | O(1) | O(n) | N/A | O(log n) |\n| **Insertion** | O(n) (amortized) | O(1) | O(1) | O(log n) |\n| **Deletion** | O(n) | O(1) | O(1) | O(log n) |\n| **Search** | O(n) | O(n) | O(1) | O(log n) |\n\n---\n\n## **7. When to Use Which?**\n| **Use Case** | **Recommended Collection** |\n|-------------|---------------------------|\n| Need fast random access | `ArrayList` |\n| Frequent insertions/deletions | `LinkedList` |\n| No duplicates, fast lookup | `HashSet` |\n| Maintain insertion order | `LinkedHashSet` |\n| Sorted elements | `TreeSet` |\n| Key-value pairs | `HashMap` |\n| Thread-safe operations | `ConcurrentHashMap` |\n| Priority-based processing | `PriorityQueue` |\n\n---\n\n## **8. Java Collections vs. Java Arrays**\n| **Feature** | **Arrays** | **Collections** |\n|------------|-----------|---------------|\n| **Size** | Fixed | Dynamic |\n| **Type Safety** | No (raw types) | Yes (Generics) |\n| **Methods** | Limited (`length`, `clone()`) | Rich (`add()`, `remove()`, `sort()`) |\n| **Performance** | Faster (direct memory access) | Slightly slower (overhead) |\n\n---\n\n## **9. Modern Enhancements (Java 8+)**\n- **Streams API** – `list.stream().filter().map().collect()`\n- **`Optional`** – Avoid `NullPointerException` with `Optional.ofNullable()`.\n- **`forEach()`** – Enhanced iteration.\n- **`removeIf()`** – Conditional removal.\n\nExample:\n```java\nList<String> fruits = Arrays.asList(\"Apple\", \"Banana\", \"Cherry\");\nfruits.stream()\n     .filter(f -> f.startsWith(\"A\"))\n     .forEach(System.out::println); // \"Apple\"\n```\n\n---\n\n## **10. Conclusion**\nThe **Java Collections Framework** is a powerful tool for managing groups of objects efficiently. By understanding the different interfaces and implementations, you can choose the right collection for your needs, improving performance and maintainability in your applications.\n\nWould you like a deeper dive into any specific part? 🚀"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      },
+      {
+        "json": {
+          "output": "The **Java Collections Framework (JCF)** is a unified architecture for representing and manipulating collections of objects. It provides interfaces, implementations, and algorithms to store, retrieve, and manipulate groups of objects efficiently. The framework is part of the **`java.util`** package and includes key components like lists, sets, queues, and maps.\n\n---\n\n## **1. Core Interfaces in Java Collections Framework**\nThe framework is built around several key interfaces, each defining different types of collections:\n\n| Interface | Description | Example Implementations |\n|-----------|------------|-------------------------|\n| **`Collection<E>`** | Root interface for all collections (except maps). | `ArrayList`, `LinkedList`, `HashSet`, `TreeSet` |\n| **`List<E>`** | Ordered collection (allows duplicates). | `ArrayList`, `LinkedList`, `Vector` |\n| **`Set<E>`** | Unordered collection (no duplicates). | `HashSet`, `LinkedHashSet`, `TreeSet` |\n| **`Queue<E>`** | FIFO (First-In-First-Out) structure. | `PriorityQueue`, `ArrayDeque`, `LinkedList` |\n| **`Deque<E>`** | Double-ended queue (supports insertion/removal at both ends). | `ArrayDeque`, `LinkedList` |\n| **`Map<K,V>`** | Key-value pairs (not a `Collection` but part of JCF). | `HashMap`, `LinkedHashMap`, `TreeMap` |\n| **`SortedSet<E>`** | Set with elements in sorted order. | `TreeSet` |\n| **`SortedMap<K,V>`** | Map with keys in sorted order. | `TreeMap` |\n\n---\n\n## **2. Key Implementations**\n### **A. List Implementations**\n- **`ArrayList`** (Resizable array, fast random access, slow insertions/deletions in the middle).\n- **`LinkedList`** (Doubly-linked list, fast insertions/deletions, slow random access).\n- **`Vector`** (Thread-safe, synchronized, legacy class).\n- **`Stack`** (LIFO structure, extends `Vector`).\n\n### **B. Set Implementations**\n- **`HashSet`** (Uses `HashMap`, no duplicates, unordered).\n- **`LinkedHashSet`** (Maintains insertion order).\n- **`TreeSet`** (Sorted in natural order or via `Comparator`).\n\n### **C. Queue & Deque Implementations**\n- **`PriorityQueue`** (Elements ordered by priority).\n- **`ArrayDeque`** (Resizable array, faster than `LinkedList` for stack/queue operations).\n- **`LinkedList`** (Can also act as a `Deque`).\n\n### **D. Map Implementations**\n- **`HashMap`** (Key-value pairs, no duplicates, unordered).\n- **`LinkedHashMap`** (Maintains insertion order).\n- **`TreeMap`** (Sorted by keys, uses Red-Black Tree).\n- **`Hashtable`** (Legacy, thread-safe, synchronized).\n- **`ConcurrentHashMap`** (Thread-safe, high-performance alternative to `Hashtable`).\n\n---\n\n## **3. Utility Classes**\n### **A. `Collections` Class**\nProvides static utility methods for collections:\n- Sorting (`sort()`, `binarySearch()`)\n- Synchronization (`synchronizedList()`, `synchronizedSet()`)\n- Unmodifiable views (`unmodifiableList()`, `unmodifiableMap()`)\n- Min/Max (`min()`, `max()`)\n\n### **B. `Arrays` Class**\nProvides utility methods for arrays (similar to `Collections` but for arrays):\n- `asList()` (Converts array to `List`)\n- `sort()`, `binarySearch()`\n- `deepToString()` (For multi-dimensional arrays)\n\n---\n\n## **4. Key Features & Advantages**\n✅ **Interoperability** – All collections implement standard interfaces.\n✅ **Reusability** – Same API for different implementations.\n✅ **Performance Optimizations** – Different structures for different use cases.\n✅ **Thread Safety** – `ConcurrentHashMap`, `CopyOnWriteArrayList`, etc.\n✅ **Generics Support** – Type-safe collections (`List<String>`, `Set<Integer>`).\n✅ **Algorithm Support** – Sorting, searching (`Collections.sort()`, `Collections.binarySearch()`).\n\n---\n\n## **5. Example Usage**\n### **List Example**\n```java\nList<String> list = new ArrayList<>();\nlist.add(\"Apple\");\nlist.add(\"Banana\");\nlist.add(\"Cherry\");\nSystem.out.println(list); // [Apple, Banana, Cherry]\n```\n\n### **Set Example**\n```java\nSet<Integer> set = new HashSet<>();\nset.add(1);\nset.add(2);\nset.add(2); // Duplicate ignored\nSystem.out.println(set); // [1, 2]\n```\n\n### **Map Example**\n```java\nMap<String, Integer> map = new HashMap<>();\nmap.put(\"One\", 1);\nmap.put(\"Two\", 2);\nSystem.out.println(map.get(\"One\")); // 1\n```\n\n### **Queue Example**\n```java\nQueue<String> queue = new LinkedList<>();\nqueue.offer(\"First\");\nqueue.offer(\"Second\");\nSystem.out.println(queue.poll()); // \"First\"\n```\n\n---\n\n## **6. When to Use Which Collection?**\n| **Need** | **Best Choice** |\n|----------|----------------|\n| Fast access by index | `ArrayList` |\n| Frequent insertions/deletions | `LinkedList` |\n| No duplicates | `HashSet` or `TreeSet` |\n| Maintain insertion order | `LinkedHashSet` or `LinkedHashMap` |\n| Sorted elements | `TreeSet` or `TreeMap` |\n| Thread-safe operations | `ConcurrentHashMap`, `CopyOnWriteArrayList` |\n| Key-value pairs | `HashMap` or `TreeMap` |\n| Priority-based processing | `PriorityQueue` |\n\n---\n\n## **7. Common Pitfalls**\n❌ **ConcurrentModificationException** – Modifying a collection while iterating (use `Iterator` or `ConcurrentHashMap`).\n❌ **Performance Issues** – Using `ArrayList` for frequent insertions/deletions in the middle.\n❌ **Memory Overhead** – `TreeSet`/`TreeMap` use more memory than `HashSet`/`HashMap`.\n❌ **Null Handling** – `HashMap` allows one `null` key, but `TreeMap` does not.\n\n---\n\n## **8. Java 8+ Enhancements**\n- **`Stream API`** – Process collections with `stream()`, `filter()`, `map()`, etc.\n- **`Optional`** – Handle `null` values gracefully.\n- **`forEach()`** – Iterate using lambda expressions.\n- **`computeIfAbsent()`** – Simplify `Map` operations.\n\n### **Example with Streams**\n```java\nList<String> fruits = Arrays.asList(\"Apple\", \"Banana\", \"Cherry\");\nfruits.stream()\n      .filter(f -> f.startsWith(\"A\"))\n      .forEach(System.out::println); // \"Apple\"\n```\n\n---\n\n## **Conclusion**\nThe **Java Collections Framework** is a powerful, flexible, and efficient way to manage groups of objects. By understanding the different interfaces and implementations, you can choose the right collection for your use case, optimizing for **performance, thread safety, and memory usage**.\n\nWould you like a deeper dive into any specific part (e.g., `ConcurrentHashMap`, `Streams`, or custom collections)? 🚀"
+        },
+        "pairedItem": {
+          "item": 0,
+          "input": 1
+        }
+      },
+      {
+        "json": {
+          "output": "The **Java Collections Framework (JCF)** is a unified architecture for representing and manipulating collections of objects in Java. It provides interfaces, implementations, and algorithms to store, retrieve, and manipulate groups of objects efficiently. The framework is part of the **java.util** package and is widely used in Java programming.\n\n---\n\n## 🔹 **Core Components of Java Collections Framework**\n\nThe JCF consists of three main parts:\n\n1. **Interfaces**\n2. **Implementations (Classes)**\n3. **Algorithms (Utility Methods from `Collections` and `Arrays`)**\n\n---\n\n## 🔹 1. **Core Interfaces**\n\nInterfaces define the abstract data types for collections. The most fundamental interfaces are:\n\n| Interface | Description | Example Implementation |\n|---------|-----------|------------------------|\n| **`Iterable<T>`** | Allows an object to be iterated using `for-each` loop. | Base for all collections. |\n| **`Collection<E>`** | Root interface for collections (excluding maps). | `ArrayList`, `LinkedList`, etc. |\n| **`List<E>`** | Ordered collection (allows duplicates), allows index-based access. | `ArrayList`, `LinkedList`, `Vector` |\n| **`Set<E>`** | Unordered collection that does not allow duplicates. | `HashSet`, `LinkedHashSet`, `TreeSet` |\n| **`Queue<E>`** | Collection designed for holding elements prior to processing. | `PriorityQueue`, `LinkedList` |\n| **`Deque<E>`** | Double-ended queue (allows insertion/removal from both ends). | `ArrayDeque`, `LinkedList` |\n| **`Map<K,V>`** | Maps keys to values (not part of `Collection` hierarchy). | `HashMap`, `TreeMap`, `HashTable` |\n\n> 🔑 Note: `Map` is not a direct sub-interface of `Collection`, but it is still part of the Collections Framework.\n\n---\n\n## 🔹 2. **Key Implementations (Concrete Classes)**\n\nHere are some commonly used classes:\n\n### ✅ **List Implementations**\n- **`ArrayList`** – Resizable array (fast random access, slower insertions/removals in the middle).\n- **`LinkedList`** – Doubly linked list (fast insertions/removals, slower random access).\n- **`Vector`** – Legacy synchronized (thread-safe) list.\n- **`Stack`** – Legacy LIFO structure (subclass of Vector).\n\n```java\nList<String> list = new ArrayList<>();\nlist.add(\"A\");\nlist.add(\"B\");\n```\n\n### ✅ **Set Implementations**\n- **`HashSet`** – Fast access, no guaranteed order, uses hash table.\n- **`LinkedHashSet`** – Maintains insertion order.\n- **`TreeSet`** – Sorted set (uses Red-Black tree).\n\n```java\nSet<Integer> set = new HashSet<>();\nset.add(5);\nset.add(3);\n```\n\n### ✅ **Queue & Deque Implementations**\n- **`PriorityQueue`** – Elements prioritized according to natural ordering or `Comparator`.\n- **`ArrayDeque`** – Resizable array deque (efficient for stack and queue operations).\n- **`LinkedList`** can also act as a queue/deque.\n\n```java\nQueue<String> queue = new PriorityQueue<>();\nqueue.offer(\"Task1\");\n```\n\n### ✅ **Map Implementations**\n- **`HashMap`** – Fast access, no order.\n- **`LinkedHashMap`** – Maintains insertion or access order.\n- **`TreeMap`** – Sorted map (sorted by keys).\n- **`Hashtable`** – Legacy synchronized map.\n- **`ConcurrentHashMap`** – Thread-safe map for concurrent programming.\n\n```java\nMap<String, Integer> map = new HashMap<>();\nmap.put(\"Alice\", 25);\n```\n\n---\n\n## 🔹 3. **Utility Classes & Algorithms**\n\nThe `Collections` and `Arrays` classes provide static utility methods to operate on collections:\n\n### 🔧 `Collections` Class Methods:\n- Sorting: `Collections.sort(list)`, `Collections.sort(list, comparator)`\n- Searching: `Collections.binarySearch(list, key)`\n- Reversing, shuffling, etc.: `Collections.reverse(list)`, `Collections.shuffle(list)`\n- Thread-safe wrappers: `Collections.synchronizedList(list)`\n- Unmodifiable views: `Collections.unmodifiableList(list)`\n\n```java\nCollections.sort(list); // Natural order\nCollections.reverse(list);\n```\n\n### 🔧 `Arrays` Class Methods:\n- Convert arrays to lists: `Arrays.asList(array)`\n- Sort arrays: `Arrays.sort(array)`\n- Binary search: `Arrays.binarySearch(array, key)`\n\n```java\nString[] arr = {\"B\", \"A\", \"C\"};\nArrays.sort(arr); // => {\"A\", \"B\", \"C\"}\n```\n\n---\n\n## 🔹 **Advantages of Java Collections Framework**\n\n✅ **Reduces programming effort** – No need to write custom data structures.\n✅ **Increases performance** – Optimized algorithms (sorting, searching).\n✅ **Interoperability** – All collections work with standard methods (`add()`, `remove()`, `contains()`, etc.).\n✅ **Extensibility & Reusability** – Easy to create custom implementations.\n✅ **Provides useful utilities** – Sorting, searching, synchronization, etc.\n\n---\n\n## 🔹 **Example: Practical Usage**\n\n```java\nimport java.util.*;\n\npublic class CollectionsDemo {\n    public static void main(String[] args) {\n        // List\n        List<String> names = new ArrayList<>();\n        names.add(\"Alice\");\n        names.add(\"Bob\");\n        Collections.sort(names); // Sort\n\n        // Set\n        Set<String> uniqueNames = new HashSet<>(names);\n\n        // Map\n        Map<String, Integer> ageMap = new HashMap<>();\n        ageMap.put(\"Alice\", 25);\n        ageMap.put(\"Bob\", 30);\n\n        // Iteration using for-each\n        for (String name : names) {\n            System.out.println(name);\n        }\n\n        // Using iterator\n        Iterator<String> it = names.iterator();\n        while (it.hasNext()) {\n            System.out.println(it.next());\n        }\n    }\n}\n```\n\n---\n\n## 🔹 **Summary Table**\n\n| Category | Purpose | Examples |\n|--------|--------|----------|\n| **List** | Ordered, allows duplicates | `ArrayList`, `LinkedList` |\n| **Set** | Unique elements, no order | `HashSet`, `TreeSet` |\n| **Queue** | FIFO/Priority order | `PriorityQueue`, `ArrayDeque` |\n| **Map** | Key-value pairs | `HashMap`, `TreeMap` |\n| **Utilities** | Sorting, searching | `Collections.sort()`, `Arrays.sort()` |\n\n---\n\n## 🔹 **Best Practices**\n\n- Use `ArrayList` for frequent access.\n- Use `HashSet` for fast lookups and uniqueness.\n- Use `LinkedHashSet` or `LinkedHashMap` when insertion order matters.\n- Use `TreeSet` or `TreeMap` when sorted order is needed.\n- Prefer interface types (`List`, `Set`, `Map`) over concrete classes in declarations.\n\n```java\nList<String> list = new ArrayList<>(); // Good\nArrayList<String> list = new ArrayList<>(); // Less flexible\n```\n\n---\n\n✅ **The Java Collections Framework is a cornerstone of efficient and reusable Java programming, enabling developers to manage groups of objects with ease and performance.**"
+        },
+        "pairedItem": {
+          "item": 0,
+          "input": 2
+        }
+      },
+      {
+        "json": {
+          "output": "The **Java Collections Framework (JCF)** is a unified architecture for representing and manipulating collections of objects in Java. It provides interfaces, implementations, and algorithms to store, retrieve, and manipulate groups of objects efficiently. The framework is part of the `java.util` package and is designed to be flexible, reusable, and high-performance.\n\n---\n\n## **1. Core Interfaces in Java Collections Framework**\nThe JCF is built around several key interfaces that define different types of collections:\n\n| **Interface** | **Description** | **Implementations** |\n|--------------|----------------|---------------------|\n| **`Collection<E>`** | Root interface for all collections. | `List`, `Set`, `Queue` |\n| **`List<E>`** | Ordered collection (allows duplicates). | `ArrayList`, `LinkedList`, `Vector` |\n| **`Set<E>`** | Unordered collection (no duplicates). | `HashSet`, `LinkedHashSet`, `TreeSet` |\n| **`Queue<E>`** | FIFO (First-In-First-Out) collection. | `PriorityQueue`, `ArrayDeque`, `LinkedList` |\n| **`Deque<E>`** | Double-ended queue (supports insertion/removal at both ends). | `ArrayDeque`, `LinkedList` |\n| **`Map<K,V>`** | Key-value pair storage (not a `Collection` but part of JCF). | `HashMap`, `LinkedHashMap`, `TreeMap` |\n\n---\n\n## **2. Key Implementations**\n### **A. List Implementations**\n- **`ArrayList`**\n  - Resizable array implementation.\n  - Fast random access (`O(1)`).\n  - Slow insertions/deletions in the middle (`O(n)`).\n  - Not thread-safe (use `Collections.synchronizedList()` for thread safety).\n\n- **`LinkedList`**\n  - Doubly-linked list implementation.\n  - Fast insertions/deletions (`O(1)` at head/tail).\n  - Slow random access (`O(n)`).\n  - Can also act as a `Queue` or `Deque`.\n\n- **`Vector`** (Legacy, thread-safe)\n  - Similar to `ArrayList` but synchronized.\n  - Slower due to synchronization overhead.\n\n### **B. Set Implementations**\n- **`HashSet`**\n  - Uses a hash table (`HashMap` internally).\n  - No ordering, allows `null`.\n  - Best for fast lookups (`O(1)`).\n\n- **`LinkedHashSet`**\n  - Maintains insertion order (uses `LinkedHashMap` internally).\n  - Slightly slower than `HashSet` due to ordering.\n\n- **`TreeSet`**\n  - Implements `SortedSet` (elements in natural or custom order).\n  - Uses a **Red-Black Tree** (`O(log n)` operations).\n  - No `null` allowed.\n\n### **C. Queue & Deque Implementations**\n- **`PriorityQueue`**\n  - Elements ordered by priority (min-heap by default).\n  - Not thread-safe.\n\n- **`ArrayDeque`**\n  - Resizable array-based `Deque`.\n  - Faster than `LinkedList` for most operations.\n\n- **`LinkedList`** (also implements `Deque`)\n  - Can be used as a `Queue` or `Deque`.\n\n### **D. Map Implementations**\n- **`HashMap`**\n  - Key-value pairs stored in a hash table.\n  - No ordering, allows one `null` key.\n  - Fast (`O(1)` average case).\n\n- **`LinkedHashMap`**\n  - Maintains insertion order (uses `LinkedHashSet` internally).\n  - Slightly slower than `HashMap`.\n\n- **`TreeMap`**\n  - Keys stored in sorted order (Red-Black Tree).\n  - `O(log n)` operations.\n  - No `null` keys allowed.\n\n- **`Hashtable`** (Legacy, thread-safe)\n  - Similar to `HashMap` but synchronized.\n  - Slower due to synchronization.\n\n---\n\n## **3. Utility Classes**\n### **A. `Collections` Class**\nProvides static utility methods for collections:\n- Sorting (`Collections.sort()`)\n- Searching (`Collections.binarySearch()`)\n- Synchronized wrappers (`Collections.synchronizedList()`)\n- Unmodifiable views (`Collections.unmodifiableList()`)\n\n### **B. `Arrays` Class**\nProvides utility methods for arrays:\n- Converting arrays to lists (`Arrays.asList()`)\n- Sorting (`Arrays.sort()`)\n- Searching (`Arrays.binarySearch()`)\n\n---\n\n## **4. Key Features & Benefits**\n✅ **Standardized API** – Consistent methods across different collection types.\n✅ **High Performance** – Optimized implementations for different use cases.\n✅ **Interoperability** – Works with generics (`List<String>`).\n✅ **Extensibility** – Easy to create custom collections by implementing interfaces.\n✅ **Algorithms** – Built-in methods like `sort()`, `shuffle()`, `reverse()`.\n\n---\n\n## **5. Example Usage**\n```java\nimport java.util.*;\n\npublic class CollectionsExample {\n    public static void main(String[] args) {\n        // List Example\n        List<String> arrayList = new ArrayList<>();\n        arrayList.add(\"Apple\");\n        arrayList.add(\"Banana\");\n        System.out.println(arrayList); // [Apple, Banana]\n\n        // Set Example (No duplicates)\n        Set<Integer> hashSet = new HashSet<>();\n        hashSet.add(1);\n        hashSet.add(2);\n        hashSet.add(1); // Duplicate ignored\n        System.out.println(hashSet); // [1, 2]\n\n        // Map Example\n        Map<String, Integer> hashMap = new HashMap<>();\n        hashMap.put(\"One\", 1);\n        hashMap.put(\"Two\", 2);\n        System.out.println(hashMap.get(\"One\")); // 1\n\n        // Queue Example (FIFO)\n        Queue<String> queue = new LinkedList<>();\n        queue.offer(\"First\");\n        queue.offer(\"Second\");\n        System.out.println(queue.poll()); // \"First\"\n    }\n}\n```\n\n---\n\n## **6. Choosing the Right Collection**\n| **Requirement** | **Best Choice** |\n|----------------|----------------|\n| Fast access by index | `ArrayList` |\n| Frequent insertions/deletions | `LinkedList` |\n| No duplicates, fast lookup | `HashSet` |\n| Sorted elements | `TreeSet` |\n| Key-value pairs | `HashMap` |\n| Thread safety | `ConcurrentHashMap`, `CopyOnWriteArrayList` |\n| Priority-based processing | `PriorityQueue` |\n\n---\n\n## **7. Thread-Safe Collections**\nJava provides thread-safe alternatives:\n- **`Collections.synchronizedList()`** → Wraps a list in a synchronized version.\n- **`ConcurrentHashMap`** → Thread-safe `HashMap`.\n- **`CopyOnWriteArrayList`** → Thread-safe `ArrayList` (for read-heavy workloads).\n- **`BlockingQueue`** (e.g., `LinkedBlockingQueue`) → For producer-consumer scenarios.\n\n---\n\n## **8. Performance Considerations**\n| **Operation** | **ArrayList** | **LinkedList** | **HashSet** | **TreeSet** |\n|--------------|--------------|---------------|------------|------------|\n| **Access by index** | `O(1)` | `O(n)` | N/A | N/A |\n| **Insertion/Deletion (middle)** | `O(n)` | `O(1)` | `O(1)` | `O(log n)` |\n| **Search** | `O(n)` | `O(n)` | `O(1)` | `O(log n)` |\n| **Insertion (end)** | `O(1)` (amortized) | `O(1)` | `O(1)` | `O(log n)` |\n\n---\n\n## **9. Common Pitfalls**\n❌ **Modifying a list while iterating** → Use `Iterator.remove()` or `forEach` with caution.\n❌ **Using raw types** → Always use generics (`List<String>` instead of `List`).\n❌ **Assuming `HashSet` is ordered** → Use `LinkedHashSet` or `TreeSet` for ordering.\n❌ **Ignoring thread safety** → Use `ConcurrentHashMap` instead of `HashMap` in multithreaded environments.\n\n---\n\n## **10. Conclusion**\nThe **Java Collections Framework** is a powerful tool for managing groups of objects efficiently. By understanding the different interfaces and implementations, you can choose the right collection for your use case, improving performance and maintainability.\n\nWould you like a deeper dive into any specific part (e.g., `ConcurrentHashMap`, custom collections, or performance benchmarks)? 🚀"
+        },
+        "pairedItem": {
+          "item": 0,
+          "input": 3
+        }
+      }
+    ],
+    "AI 0.0 Agent": [
+      {
+        "json": {
+          "output": "The **Java Collections Framework (JCF)** is a unified architecture for representing and manipulating collections of objects in Java. It provides interfaces, implementations, and algorithms to store, retrieve, and manipulate groups of objects efficiently. The framework is part of the `java.util` package and is designed to be flexible, reusable, and high-performance.\n\n---\n\n## **1. Core Interfaces in Java Collections Framework**\nThe JCF is built around several key interfaces that define different types of collections:\n\n| **Interface**  | **Description** | **Implementations** |\n|---------------|----------------|---------------------|\n| **`Collection<E>`** | Root interface for all collections. | `List`, `Set`, `Queue` |\n| **`List<E>`** | Ordered collection (allows duplicates). | `ArrayList`, `LinkedList`, `Vector` |\n| **`Set<E>`** | Unordered collection (no duplicates). | `HashSet`, `LinkedHashSet`, `TreeSet` |\n| **`Queue<E>`** | FIFO (First-In-First-Out) structure. | `PriorityQueue`, `ArrayDeque`, `LinkedList` |\n| **`Deque<E>`** | Double-ended queue (supports insertion/removal at both ends). | `ArrayDeque`, `LinkedList` |\n| **`Map<K,V>`** | Key-value pairs (not a `Collection` but part of JCF). | `HashMap`, `LinkedHashMap`, `TreeMap` |\n\n---\n\n## **2. Key Implementations**\n### **A. List Implementations**\n- **`ArrayList`** (Dynamic array, fast random access, slow insertions/deletions in the middle).\n- **`LinkedList`** (Doubly-linked list, fast insertions/deletions, slow random access).\n- **`Vector`** (Thread-safe, legacy, replaced by `ArrayList` in most cases).\n- **`Stack`** (LIFO structure, legacy, replaced by `Deque`).\n\n### **B. Set Implementations**\n- **`HashSet`** (Uses a hash table, no ordering, allows `null`).\n- **`LinkedHashSet`** (Maintains insertion order).\n- **`TreeSet`** (Sorted in natural order or via `Comparator`, no `null`).\n\n### **C. Queue & Deque Implementations**\n- **`PriorityQueue`** (Elements ordered by priority).\n- **`ArrayDeque`** (Resizable array, faster than `LinkedList` for stack/queue operations).\n- **`LinkedList`** (Can also act as a `Deque`).\n\n### **D. Map Implementations**\n- **`HashMap`** (Fastest, no ordering, allows one `null` key).\n- **`LinkedHashMap`** (Maintains insertion order).\n- **`TreeMap`** (Sorted by keys, no `null` keys).\n- **`Hashtable`** (Legacy, thread-safe, replaced by `ConcurrentHashMap`).\n\n---\n\n## **3. Utility Classes**\n### **A. `Collections` Class**\nProvides static utility methods for collections:\n- Sorting (`sort()`)\n- Searching (`binarySearch()`)\n- Synchronization (`synchronizedList()`, `synchronizedSet()`)\n- Unmodifiable views (`unmodifiableList()`, `unmodifiableMap()`)\n\n### **B. `Arrays` Class**\nProvides utility methods for arrays (e.g., `asList()`, `sort()`, `binarySearch()`).\n\n---\n\n## **4. Key Features**\n✅ **Type Safety** – Generics (`List<String>`) ensure compile-time type checking.\n✅ **Flexibility** – Different implementations for different use cases.\n✅ **Algorithms** – Built-in methods like `sort()`, `shuffle()`, `reverse()`.\n✅ **Thread Safety** – Some implementations (`Vector`, `Hashtable`) are thread-safe, but modern alternatives (`CopyOnWriteArrayList`, `ConcurrentHashMap`) are preferred.\n✅ **Interoperability** – Works seamlessly with Java Streams (`stream()`, `parallelStream()`).\n\n---\n\n## **5. Example Usage**\n### **List Example**\n```java\nList<String> list = new ArrayList<>();\nlist.add(\"Apple\");\nlist.add(\"Banana\");\nlist.forEach(System.out::println); // Iteration\n```\n\n### **Set Example**\n```java\nSet<Integer> set = new HashSet<>();\nset.add(1);\nset.add(2);\nset.add(1); // Duplicate ignored\nSystem.out.println(set); // [1, 2]\n```\n\n### **Map Example**\n```java\nMap<String, Integer> map = new HashMap<>();\nmap.put(\"Alice\", 25);\nmap.put(\"Bob\", 30);\nSystem.out.println(map.get(\"Alice\")); // 25\n```\n\n### **Queue Example**\n```java\nQueue<String> queue = new LinkedList<>();\nqueue.offer(\"First\");\nqueue.offer(\"Second\");\nSystem.out.println(queue.poll()); // \"First\" (FIFO)\n```\n\n---\n\n## **6. Performance Considerations**\n| **Operation** | **ArrayList** | **LinkedList** | **HashSet** | **TreeSet** |\n|--------------|--------------|---------------|------------|------------|\n| **Access** | O(1) | O(n) | N/A | O(log n) |\n| **Insertion** | O(n) (amortized) | O(1) | O(1) | O(log n) |\n| **Deletion** | O(n) | O(1) | O(1) | O(log n) |\n| **Search** | O(n) | O(n) | O(1) | O(log n) |\n\n---\n\n## **7. When to Use Which?**\n| **Use Case** | **Recommended Collection** |\n|-------------|---------------------------|\n| Need fast random access | `ArrayList` |\n| Frequent insertions/deletions | `LinkedList` |\n| No duplicates, fast lookup | `HashSet` |\n| Maintain insertion order | `LinkedHashSet` |\n| Sorted elements | `TreeSet` |\n| Key-value pairs | `HashMap` |\n| Thread-safe operations | `ConcurrentHashMap` |\n| Priority-based processing | `PriorityQueue` |\n\n---\n\n## **8. Java Collections vs. Java Arrays**\n| **Feature** | **Arrays** | **Collections** |\n|------------|-----------|---------------|\n| **Size** | Fixed | Dynamic |\n| **Type Safety** | No (raw types) | Yes (Generics) |\n| **Methods** | Limited (`length`, `clone()`) | Rich (`add()`, `remove()`, `sort()`) |\n| **Performance** | Faster (direct memory access) | Slightly slower (overhead) |\n\n---\n\n## **9. Modern Enhancements (Java 8+)**\n- **Streams API** – `list.stream().filter().map().collect()`\n- **`Optional`** – Avoid `NullPointerException` with `Optional.ofNullable()`.\n- **`forEach()`** – Enhanced iteration.\n- **`removeIf()`** – Conditional removal.\n\nExample:\n```java\nList<String> fruits = Arrays.asList(\"Apple\", \"Banana\", \"Cherry\");\nfruits.stream()\n     .filter(f -> f.startsWith(\"A\"))\n     .forEach(System.out::println); // \"Apple\"\n```\n\n---\n\n## **10. Conclusion**\nThe **Java Collections Framework** is a powerful tool for managing groups of objects efficiently. By understanding the different interfaces and implementations, you can choose the right collection for your needs, improving performance and maintainability in your applications.\n\nWould you like a deeper dive into any specific part? 🚀"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ],
+    "0.3 AI Agent": [
+      {
+        "json": {
+          "output": "The **Java Collections Framework (JCF)** is a unified architecture for representing and manipulating collections of objects. It provides interfaces, implementations, and algorithms to store, retrieve, and manipulate groups of objects efficiently. The framework is part of the **`java.util`** package and includes key components like lists, sets, queues, and maps.\n\n---\n\n## **1. Core Interfaces in Java Collections Framework**\nThe framework is built around several key interfaces, each defining different types of collections:\n\n| Interface | Description | Example Implementations |\n|-----------|------------|-------------------------|\n| **`Collection<E>`** | Root interface for all collections (except maps). | `ArrayList`, `LinkedList`, `HashSet`, `TreeSet` |\n| **`List<E>`** | Ordered collection (allows duplicates). | `ArrayList`, `LinkedList`, `Vector` |\n| **`Set<E>`** | Unordered collection (no duplicates). | `HashSet`, `LinkedHashSet`, `TreeSet` |\n| **`Queue<E>`** | FIFO (First-In-First-Out) structure. | `PriorityQueue`, `ArrayDeque`, `LinkedList` |\n| **`Deque<E>`** | Double-ended queue (supports insertion/removal at both ends). | `ArrayDeque`, `LinkedList` |\n| **`Map<K,V>`** | Key-value pairs (not a `Collection` but part of JCF). | `HashMap`, `LinkedHashMap`, `TreeMap` |\n| **`SortedSet<E>`** | Set with elements in sorted order. | `TreeSet` |\n| **`SortedMap<K,V>`** | Map with keys in sorted order. | `TreeMap` |\n\n---\n\n## **2. Key Implementations**\n### **A. List Implementations**\n- **`ArrayList`** (Resizable array, fast random access, slow insertions/deletions in the middle).\n- **`LinkedList`** (Doubly-linked list, fast insertions/deletions, slow random access).\n- **`Vector`** (Thread-safe, synchronized, legacy class).\n- **`Stack`** (LIFO structure, extends `Vector`).\n\n### **B. Set Implementations**\n- **`HashSet`** (Uses `HashMap`, no duplicates, unordered).\n- **`LinkedHashSet`** (Maintains insertion order).\n- **`TreeSet`** (Sorted in natural order or via `Comparator`).\n\n### **C. Queue & Deque Implementations**\n- **`PriorityQueue`** (Elements ordered by priority).\n- **`ArrayDeque`** (Resizable array, faster than `LinkedList` for stack/queue operations).\n- **`LinkedList`** (Can also act as a `Deque`).\n\n### **D. Map Implementations**\n- **`HashMap`** (Key-value pairs, no duplicates, unordered).\n- **`LinkedHashMap`** (Maintains insertion order).\n- **`TreeMap`** (Sorted by keys, uses Red-Black Tree).\n- **`Hashtable`** (Legacy, thread-safe, synchronized).\n- **`ConcurrentHashMap`** (Thread-safe, high-performance alternative to `Hashtable`).\n\n---\n\n## **3. Utility Classes**\n### **A. `Collections` Class**\nProvides static utility methods for collections:\n- Sorting (`sort()`, `binarySearch()`)\n- Synchronization (`synchronizedList()`, `synchronizedSet()`)\n- Unmodifiable views (`unmodifiableList()`, `unmodifiableMap()`)\n- Min/Max (`min()`, `max()`)\n\n### **B. `Arrays` Class**\nProvides utility methods for arrays (similar to `Collections` but for arrays):\n- `asList()` (Converts array to `List`)\n- `sort()`, `binarySearch()`\n- `deepToString()` (For multi-dimensional arrays)\n\n---\n\n## **4. Key Features & Advantages**\n✅ **Interoperability** – All collections implement standard interfaces.\n✅ **Reusability** – Same API for different implementations.\n✅ **Performance Optimizations** – Different structures for different use cases.\n✅ **Thread Safety** – `ConcurrentHashMap`, `CopyOnWriteArrayList`, etc.\n✅ **Generics Support** – Type-safe collections (`List<String>`, `Set<Integer>`).\n✅ **Algorithm Support** – Sorting, searching (`Collections.sort()`, `Collections.binarySearch()`).\n\n---\n\n## **5. Example Usage**\n### **List Example**\n```java\nList<String> list = new ArrayList<>();\nlist.add(\"Apple\");\nlist.add(\"Banana\");\nlist.add(\"Cherry\");\nSystem.out.println(list); // [Apple, Banana, Cherry]\n```\n\n### **Set Example**\n```java\nSet<Integer> set = new HashSet<>();\nset.add(1);\nset.add(2);\nset.add(2); // Duplicate ignored\nSystem.out.println(set); // [1, 2]\n```\n\n### **Map Example**\n```java\nMap<String, Integer> map = new HashMap<>();\nmap.put(\"One\", 1);\nmap.put(\"Two\", 2);\nSystem.out.println(map.get(\"One\")); // 1\n```\n\n### **Queue Example**\n```java\nQueue<String> queue = new LinkedList<>();\nqueue.offer(\"First\");\nqueue.offer(\"Second\");\nSystem.out.println(queue.poll()); // \"First\"\n```\n\n---\n\n## **6. When to Use Which Collection?**\n| **Need** | **Best Choice** |\n|----------|----------------|\n| Fast access by index | `ArrayList` |\n| Frequent insertions/deletions | `LinkedList` |\n| No duplicates | `HashSet` or `TreeSet` |\n| Maintain insertion order | `LinkedHashSet` or `LinkedHashMap` |\n| Sorted elements | `TreeSet` or `TreeMap` |\n| Thread-safe operations | `ConcurrentHashMap`, `CopyOnWriteArrayList` |\n| Key-value pairs | `HashMap` or `TreeMap` |\n| Priority-based processing | `PriorityQueue` |\n\n---\n\n## **7. Common Pitfalls**\n❌ **ConcurrentModificationException** – Modifying a collection while iterating (use `Iterator` or `ConcurrentHashMap`).\n❌ **Performance Issues** – Using `ArrayList` for frequent insertions/deletions in the middle.\n❌ **Memory Overhead** – `TreeSet`/`TreeMap` use more memory than `HashSet`/`HashMap`.\n❌ **Null Handling** – `HashMap` allows one `null` key, but `TreeMap` does not.\n\n---\n\n## **8. Java 8+ Enhancements**\n- **`Stream API`** – Process collections with `stream()`, `filter()`, `map()`, etc.\n- **`Optional`** – Handle `null` values gracefully.\n- **`forEach()`** – Iterate using lambda expressions.\n- **`computeIfAbsent()`** – Simplify `Map` operations.\n\n### **Example with Streams**\n```java\nList<String> fruits = Arrays.asList(\"Apple\", \"Banana\", \"Cherry\");\nfruits.stream()\n      .filter(f -> f.startsWith(\"A\"))\n      .forEach(System.out::println); // \"Apple\"\n```\n\n---\n\n## **Conclusion**\nThe **Java Collections Framework** is a powerful, flexible, and efficient way to manage groups of objects. By understanding the different interfaces and implementations, you can choose the right collection for your use case, optimizing for **performance, thread safety, and memory usage**.\n\nWould you like a deeper dive into any specific part (e.g., `ConcurrentHashMap`, `Streams`, or custom collections)? 🚀"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ],
+    "1.0 AI Agent": [
+      {
+        "json": {
+          "output": "The **Java Collections Framework (JCF)** is a unified architecture for representing and manipulating collections of objects in Java. It provides interfaces, implementations, and algorithms to store, retrieve, and manipulate groups of objects efficiently. The framework is part of the `java.util` package and is designed to be flexible, reusable, and high-performance.\n\n---\n\n## **1. Core Interfaces in Java Collections Framework**\nThe JCF is built around several key interfaces that define different types of collections:\n\n| **Interface** | **Description** | **Implementations** |\n|--------------|----------------|---------------------|\n| **`Collection<E>`** | Root interface for all collections. | `List`, `Set`, `Queue` |\n| **`List<E>`** | Ordered collection (allows duplicates). | `ArrayList`, `LinkedList`, `Vector` |\n| **`Set<E>`** | Unordered collection (no duplicates). | `HashSet`, `LinkedHashSet`, `TreeSet` |\n| **`Queue<E>`** | FIFO (First-In-First-Out) collection. | `PriorityQueue`, `ArrayDeque`, `LinkedList` |\n| **`Deque<E>`** | Double-ended queue (supports insertion/removal at both ends). | `ArrayDeque`, `LinkedList` |\n| **`Map<K,V>`** | Key-value pair storage (not a `Collection` but part of JCF). | `HashMap`, `LinkedHashMap`, `TreeMap` |\n\n---\n\n## **2. Key Implementations**\n### **A. List Implementations**\n- **`ArrayList`**\n  - Resizable array implementation.\n  - Fast random access (`O(1)`).\n  - Slow insertions/deletions in the middle (`O(n)`).\n  - Not thread-safe (use `Collections.synchronizedList()` for thread safety).\n\n- **`LinkedList`**\n  - Doubly-linked list implementation.\n  - Fast insertions/deletions (`O(1)` at head/tail).\n  - Slow random access (`O(n)`).\n  - Can also act as a `Queue` or `Deque`.\n\n- **`Vector`** (Legacy, thread-safe)\n  - Similar to `ArrayList` but synchronized.\n  - Slower due to synchronization overhead.\n\n### **B. Set Implementations**\n- **`HashSet`**\n  - Uses a hash table (`HashMap` internally).\n  - No ordering, allows `null`.\n  - Best for fast lookups (`O(1)`).\n\n- **`LinkedHashSet`**\n  - Maintains insertion order (uses `LinkedHashMap` internally).\n  - Slightly slower than `HashSet` due to ordering.\n\n- **`TreeSet`**\n  - Implements `SortedSet` (elements in natural or custom order).\n  - Uses a **Red-Black Tree** (`O(log n)` operations).\n  - No `null` allowed.\n\n### **C. Queue & Deque Implementations**\n- **`PriorityQueue`**\n  - Elements ordered by priority (min-heap by default).\n  - Not thread-safe.\n\n- **`ArrayDeque`**\n  - Resizable array-based `Deque`.\n  - Faster than `LinkedList` for most operations.\n\n- **`LinkedList`** (also implements `Deque`)\n  - Can be used as a `Queue` or `Deque`.\n\n### **D. Map Implementations**\n- **`HashMap`**\n  - Key-value pairs stored in a hash table.\n  - No ordering, allows one `null` key.\n  - Fast (`O(1)` average case).\n\n- **`LinkedHashMap`**\n  - Maintains insertion order (uses `LinkedHashSet` internally).\n  - Slightly slower than `HashMap`.\n\n- **`TreeMap`**\n  - Keys stored in sorted order (Red-Black Tree).\n  - `O(log n)` operations.\n  - No `null` keys allowed.\n\n- **`Hashtable`** (Legacy, thread-safe)\n  - Similar to `HashMap` but synchronized.\n  - Slower due to synchronization.\n\n---\n\n## **3. Utility Classes**\n### **A. `Collections` Class**\nProvides static utility methods for collections:\n- Sorting (`Collections.sort()`)\n- Searching (`Collections.binarySearch()`)\n- Synchronized wrappers (`Collections.synchronizedList()`)\n- Unmodifiable views (`Collections.unmodifiableList()`)\n\n### **B. `Arrays` Class**\nProvides utility methods for arrays:\n- Converting arrays to lists (`Arrays.asList()`)\n- Sorting (`Arrays.sort()`)\n- Searching (`Arrays.binarySearch()`)\n\n---\n\n## **4. Key Features & Benefits**\n✅ **Standardized API** – Consistent methods across different collection types.\n✅ **High Performance** – Optimized implementations for different use cases.\n✅ **Interoperability** – Works with generics (`List<String>`).\n✅ **Extensibility** – Easy to create custom collections by implementing interfaces.\n✅ **Algorithms** – Built-in methods like `sort()`, `shuffle()`, `reverse()`.\n\n---\n\n## **5. Example Usage**\n```java\nimport java.util.*;\n\npublic class CollectionsExample {\n    public static void main(String[] args) {\n        // List Example\n        List<String> arrayList = new ArrayList<>();\n        arrayList.add(\"Apple\");\n        arrayList.add(\"Banana\");\n        System.out.println(arrayList); // [Apple, Banana]\n\n        // Set Example (No duplicates)\n        Set<Integer> hashSet = new HashSet<>();\n        hashSet.add(1);\n        hashSet.add(2);\n        hashSet.add(1); // Duplicate ignored\n        System.out.println(hashSet); // [1, 2]\n\n        // Map Example\n        Map<String, Integer> hashMap = new HashMap<>();\n        hashMap.put(\"One\", 1);\n        hashMap.put(\"Two\", 2);\n        System.out.println(hashMap.get(\"One\")); // 1\n\n        // Queue Example (FIFO)\n        Queue<String> queue = new LinkedList<>();\n        queue.offer(\"First\");\n        queue.offer(\"Second\");\n        System.out.println(queue.poll()); // \"First\"\n    }\n}\n```\n\n---\n\n## **6. Choosing the Right Collection**\n| **Requirement** | **Best Choice** |\n|----------------|----------------|\n| Fast access by index | `ArrayList` |\n| Frequent insertions/deletions | `LinkedList` |\n| No duplicates, fast lookup | `HashSet` |\n| Sorted elements | `TreeSet` |\n| Key-value pairs | `HashMap` |\n| Thread safety | `ConcurrentHashMap`, `CopyOnWriteArrayList` |\n| Priority-based processing | `PriorityQueue` |\n\n---\n\n## **7. Thread-Safe Collections**\nJava provides thread-safe alternatives:\n- **`Collections.synchronizedList()`** → Wraps a list in a synchronized version.\n- **`ConcurrentHashMap`** → Thread-safe `HashMap`.\n- **`CopyOnWriteArrayList`** → Thread-safe `ArrayList` (for read-heavy workloads).\n- **`BlockingQueue`** (e.g., `LinkedBlockingQueue`) → For producer-consumer scenarios.\n\n---\n\n## **8. Performance Considerations**\n| **Operation** | **ArrayList** | **LinkedList** | **HashSet** | **TreeSet** |\n|--------------|--------------|---------------|------------|------------|\n| **Access by index** | `O(1)` | `O(n)` | N/A | N/A |\n| **Insertion/Deletion (middle)** | `O(n)` | `O(1)` | `O(1)` | `O(log n)` |\n| **Search** | `O(n)` | `O(n)` | `O(1)` | `O(log n)` |\n| **Insertion (end)** | `O(1)` (amortized) | `O(1)` | `O(1)` | `O(log n)` |\n\n---\n\n## **9. Common Pitfalls**\n❌ **Modifying a list while iterating** → Use `Iterator.remove()` or `forEach` with caution.\n❌ **Using raw types** → Always use generics (`List<String>` instead of `List`).\n❌ **Assuming `HashSet` is ordered** → Use `LinkedHashSet` or `TreeSet` for ordering.\n❌ **Ignoring thread safety** → Use `ConcurrentHashMap` instead of `HashMap` in multithreaded environments.\n\n---\n\n## **10. Conclusion**\nThe **Java Collections Framework** is a powerful tool for managing groups of objects efficiently. By understanding the different interfaces and implementations, you can choose the right collection for your use case, improving performance and maintainability.\n\nWould you like a deeper dive into any specific part (e.g., `ConcurrentHashMap`, custom collections, or performance benchmarks)? 🚀"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ],
+    "0.7 AI Agent": [
+      {
+        "json": {
+          "output": "The **Java Collections Framework (JCF)** is a unified architecture for representing and manipulating collections of objects in Java. It provides interfaces, implementations, and algorithms to store, retrieve, and manipulate groups of objects efficiently. The framework is part of the **java.util** package and is widely used in Java programming.\n\n---\n\n## 🔹 **Core Components of Java Collections Framework**\n\nThe JCF consists of three main parts:\n\n1. **Interfaces**\n2. **Implementations (Classes)**\n3. **Algorithms (Utility Methods from `Collections` and `Arrays`)**\n\n---\n\n## 🔹 1. **Core Interfaces**\n\nInterfaces define the abstract data types for collections. The most fundamental interfaces are:\n\n| Interface | Description | Example Implementation |\n|---------|-----------|------------------------|\n| **`Iterable<T>`** | Allows an object to be iterated using `for-each` loop. | Base for all collections. |\n| **`Collection<E>`** | Root interface for collections (excluding maps). | `ArrayList`, `LinkedList`, etc. |\n| **`List<E>`** | Ordered collection (allows duplicates), allows index-based access. | `ArrayList`, `LinkedList`, `Vector` |\n| **`Set<E>`** | Unordered collection that does not allow duplicates. | `HashSet`, `LinkedHashSet`, `TreeSet` |\n| **`Queue<E>`** | Collection designed for holding elements prior to processing. | `PriorityQueue`, `LinkedList` |\n| **`Deque<E>`** | Double-ended queue (allows insertion/removal from both ends). | `ArrayDeque`, `LinkedList` |\n| **`Map<K,V>`** | Maps keys to values (not part of `Collection` hierarchy). | `HashMap`, `TreeMap`, `HashTable` |\n\n> 🔑 Note: `Map` is not a direct sub-interface of `Collection`, but it is still part of the Collections Framework.\n\n---\n\n## 🔹 2. **Key Implementations (Concrete Classes)**\n\nHere are some commonly used classes:\n\n### ✅ **List Implementations**\n- **`ArrayList`** – Resizable array (fast random access, slower insertions/removals in the middle).\n- **`LinkedList`** – Doubly linked list (fast insertions/removals, slower random access).\n- **`Vector`** – Legacy synchronized (thread-safe) list.\n- **`Stack`** – Legacy LIFO structure (subclass of Vector).\n\n```java\nList<String> list = new ArrayList<>();\nlist.add(\"A\");\nlist.add(\"B\");\n```\n\n### ✅ **Set Implementations**\n- **`HashSet`** – Fast access, no guaranteed order, uses hash table.\n- **`LinkedHashSet`** – Maintains insertion order.\n- **`TreeSet`** – Sorted set (uses Red-Black tree).\n\n```java\nSet<Integer> set = new HashSet<>();\nset.add(5);\nset.add(3);\n```\n\n### ✅ **Queue & Deque Implementations**\n- **`PriorityQueue`** – Elements prioritized according to natural ordering or `Comparator`.\n- **`ArrayDeque`** – Resizable array deque (efficient for stack and queue operations).\n- **`LinkedList`** can also act as a queue/deque.\n\n```java\nQueue<String> queue = new PriorityQueue<>();\nqueue.offer(\"Task1\");\n```\n\n### ✅ **Map Implementations**\n- **`HashMap`** – Fast access, no order.\n- **`LinkedHashMap`** – Maintains insertion or access order.\n- **`TreeMap`** – Sorted map (sorted by keys).\n- **`Hashtable`** – Legacy synchronized map.\n- **`ConcurrentHashMap`** – Thread-safe map for concurrent programming.\n\n```java\nMap<String, Integer> map = new HashMap<>();\nmap.put(\"Alice\", 25);\n```\n\n---\n\n## 🔹 3. **Utility Classes & Algorithms**\n\nThe `Collections` and `Arrays` classes provide static utility methods to operate on collections:\n\n### 🔧 `Collections` Class Methods:\n- Sorting: `Collections.sort(list)`, `Collections.sort(list, comparator)`\n- Searching: `Collections.binarySearch(list, key)`\n- Reversing, shuffling, etc.: `Collections.reverse(list)`, `Collections.shuffle(list)`\n- Thread-safe wrappers: `Collections.synchronizedList(list)`\n- Unmodifiable views: `Collections.unmodifiableList(list)`\n\n```java\nCollections.sort(list); // Natural order\nCollections.reverse(list);\n```\n\n### 🔧 `Arrays` Class Methods:\n- Convert arrays to lists: `Arrays.asList(array)`\n- Sort arrays: `Arrays.sort(array)`\n- Binary search: `Arrays.binarySearch(array, key)`\n\n```java\nString[] arr = {\"B\", \"A\", \"C\"};\nArrays.sort(arr); // => {\"A\", \"B\", \"C\"}\n```\n\n---\n\n## 🔹 **Advantages of Java Collections Framework**\n\n✅ **Reduces programming effort** – No need to write custom data structures.\n✅ **Increases performance** – Optimized algorithms (sorting, searching).\n✅ **Interoperability** – All collections work with standard methods (`add()`, `remove()`, `contains()`, etc.).\n✅ **Extensibility & Reusability** – Easy to create custom implementations.\n✅ **Provides useful utilities** – Sorting, searching, synchronization, etc.\n\n---\n\n## 🔹 **Example: Practical Usage**\n\n```java\nimport java.util.*;\n\npublic class CollectionsDemo {\n    public static void main(String[] args) {\n        // List\n        List<String> names = new ArrayList<>();\n        names.add(\"Alice\");\n        names.add(\"Bob\");\n        Collections.sort(names); // Sort\n\n        // Set\n        Set<String> uniqueNames = new HashSet<>(names);\n\n        // Map\n        Map<String, Integer> ageMap = new HashMap<>();\n        ageMap.put(\"Alice\", 25);\n        ageMap.put(\"Bob\", 30);\n\n        // Iteration using for-each\n        for (String name : names) {\n            System.out.println(name);\n        }\n\n        // Using iterator\n        Iterator<String> it = names.iterator();\n        while (it.hasNext()) {\n            System.out.println(it.next());\n        }\n    }\n}\n```\n\n---\n\n## 🔹 **Summary Table**\n\n| Category | Purpose | Examples |\n|--------|--------|----------|\n| **List** | Ordered, allows duplicates | `ArrayList`, `LinkedList` |\n| **Set** | Unique elements, no order | `HashSet`, `TreeSet` |\n| **Queue** | FIFO/Priority order | `PriorityQueue`, `ArrayDeque` |\n| **Map** | Key-value pairs | `HashMap`, `TreeMap` |\n| **Utilities** | Sorting, searching | `Collections.sort()`, `Arrays.sort()` |\n\n---\n\n## 🔹 **Best Practices**\n\n- Use `ArrayList` for frequent access.\n- Use `HashSet` for fast lookups and uniqueness.\n- Use `LinkedHashSet` or `LinkedHashMap` when insertion order matters.\n- Use `TreeSet` or `TreeMap` when sorted order is needed.\n- Prefer interface types (`List`, `Set`, `Map`) over concrete classes in declarations.\n\n```java\nList<String> list = new ArrayList<>(); // Good\nArrayList<String> list = new ArrayList<>(); // Less flexible\n```\n\n---\n\n✅ **The Java Collections Framework is a cornerstone of efficient and reusable Java programming, enabling developers to manage groups of objects with ease and performance.**"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ]
+  },
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "AI 0.0 Agent",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "0.3 AI Agent",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "0.7 AI Agent",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "1.0 AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Append or update row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Temp0.0": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI 0.0 Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Temp0.7": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "0.3 AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Temp1.0": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "0.7 AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Temp0.3": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "1.0 AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI 0.0 Agent": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "0.3 AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "1.0 AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 3
+          }
+        ]
+      ]
+    },
+    "0.7 AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 2
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "ff1ded1a-a244-4676-927d-dc77d48e53c3",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "ce633715522fed7c810c382a8416068af510eb5efa2a068770ce7966e289da03"
+  },
+  "nodeGroups": [],
+  "id": "dgfDi4mOpCMa1YXE",
+  "tags": []
+}
