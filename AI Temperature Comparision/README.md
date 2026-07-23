@@ -60,11 +60,9 @@ Split Input
 
 ## 📸 Workflow Screenshot
 
-> Replace the path below with your screenshot.
 
-```markdown
-![Workflow](images/workflow.png)
-```
+![Workflow](https://github.com/Jeswin-Madona/n8n-Workflows/blob/e46b2b7a41b5115e1982bb4ca4a2692824751370/AI%20Temperature%20Comparision/n8n%20AI%20Temp%20Comparision.png)
+
 
 ---
 
